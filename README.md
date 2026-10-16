@@ -14,6 +14,10 @@ Aplicación Next.js 16 con portafolio público, solicitud de tatuaje en cinco pa
 
 > Los scripts de base de datos cargan las variables desde `.env.local` y `.env`. No agregues secretos al repositorio.
 
+## Frontend separado en Netlify
+
+El mismo repositorio puede desplegar el sitio público en Netlify y mantener las APIs y el backoffice en Render. Configura únicamente en Netlify `NEXT_PUBLIC_API_URL=https://tu-servicio.onrender.com`. Esta variable hace proxy de `/api/*` hacia Render, obtiene desde ahí el portafolio público y redirige `/admin/*` al backoffice. No configures `DATABASE_URL` ni credenciales administrativas en Netlify.
+
 ## Rutas administrativas
 
 - `/admin`: métricas operativas, próximas citas y acciones pendientes.

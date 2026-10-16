@@ -4,6 +4,7 @@ node_modules/
 !.env.example
 public/uploads/
 data/runtime/
+backups/
 *.log
 *.tsbuildinfo
 contact-sheet.jpg

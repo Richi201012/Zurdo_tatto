@@ -1,0 +1,55 @@
+{
+  "version": "7",
+  "dialect": "postgresql",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "7",
+      "when": 1791835167359,
+      "tag": "0000_luxuriant_mister_sinister",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1791835202447,
+      "tag": "0001_unusual_tusk",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791842400000,
+      "tag": "0002_merge_coverup",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1791846000000,
+      "tag": "0003_merge_roses_coverup",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1791849600000,
+      "tag": "0004_correct_san_judas_title",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1792011600000,
+      "tag": "0005_booking_backoffice",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1792080000000,
+      "tag": "0006_booking_expiration_transfer",
+      "breakpoints": true
+    }
+  ]
+}

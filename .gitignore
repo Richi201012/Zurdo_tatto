@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env*
+!.env.example
+public/uploads/
+data/runtime/
+*.log
+*.tsbuildinfo
+contact-sheet.jpg

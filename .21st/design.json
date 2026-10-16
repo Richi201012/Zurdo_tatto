@@ -1,0 +1,36 @@
+{
+  "version": 1,
+  "project": {
+    "name": "zurdo_tatto",
+    "productType": "Tattoo studio portfolio and booking website",
+    "stack": ["Next.js", "React", "CSS", "Framer Motion"]
+  },
+  "sources": {
+    "tokens": [],
+    "components": [],
+    "assets": [],
+    "instructions": []
+  },
+  "design": {
+    "colorMode": "dark",
+    "colors": {},
+    "typography": {},
+    "spacing": {},
+    "radius": {},
+    "shadows": {},
+    "motion": {},
+    "density": "spacious"
+  },
+  "components": {
+    "installed": [],
+    "preferredPrimitives": [],
+    "patterns": ["Editorial image carousels grouped by tattoo style", "Modal work detail"]
+  },
+  "constraints": {
+    "must": ["Use real portfolio imagery", "Keep portfolio images at a consistent 4:5 ratio", "Provide visible carousel controls and native touch scrolling", "Respect reduced motion"],
+    "avoid": ["Mixed image proportions in the same portfolio view", "Auto-rotating carousels", "Generic tattoo visual clichés"]
+  },
+    "decisions": ["The public portfolio is organized as one horizontal carousel per tattoo style.", "Every portfolio card uses a uniform 4:5 crop while the detail modal preserves the complete image.", "Carousel movement is user-controlled only; touch swipe, keyboard-focusable buttons, and reduced-motion behavior are supported.", "Cover-up projects are stored as one portfolio item: the finished result is the carousel cover, while the detail modal shows a labeled before-and-after comparison.", "The administrative backoffice uses a persistent desktop sidebar, a mobile drawer, compact operational panels, semantic status badges, and action-first dashboards instead of decorative charts.", "The public request wizard collects only a preferred day. The tattoo artist assigns the exact date, time, duration, and artist from the backoffice before the quote can be sent.", "Request detail management is reduced to appointment scheduling and status, one complete quote, and one deposit validation decision.", "Client communication is status-driven: each important backoffice action automatically sends one clear light-background email with the current state, project summary, next step, and payment details when applicable. The communication page is a notification history with retry for failures, not a template library.", "Public booking is available every day during the studio-wide daily window. Active appointments and explicit exceptions are the only blockers. Sending a quote starts a fixed two-hour deposit window; unpaid tentative appointments expire and release the slot automatically.", "The artist story uses an editorial biography, large experience facts, and a three-image credential gallery. Documents remain fully visible and open at full resolution; copy distinguishes historical training from current credential validity.", "Quotes use one estimated price instead of a minimum-maximum range; both legacy database price fields store the same amount for compatibility.", "Tattoo dimensions are requested and displayed in centimeters; numeric legacy values are formatted with the cm unit at presentation time.", "Transactional emails use the supplied mascot status artwork, with one semantically matched illustration for every email state.", "The original mascot is shown fully inside the hero, with restrained upward parallax, a warm accent glow, and reduced visual weight on mobile."],
+  "evidence": [],
+  "generatedAt": "2026-10-12T19:02:46.771Z"
+}

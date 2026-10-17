@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
       beforeFiles: [
         { source: "/api/:path*", destination: `${backendUrl}/api/:path*` },
         { source: "/admin/:path*", destination: `${backendUrl}/admin/:path*` },
+        { source: "/uploads/:path*", destination: `${backendUrl}/uploads/:path*` },
       ],
       afterFiles: [],
       fallback: [],

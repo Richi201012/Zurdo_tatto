@@ -15,6 +15,10 @@ const editableStatuses: AppointmentStatus[] = ["TENTATIVE", "CONFIRMED", "IN_PRO
 async function jsonRequest(url: string, options: RequestInit) {
   const response = await fetch(url, options);
   const body = await response.json().catch(() => ({}));
+  if (response.status === 401) {
+    window.location.assign("/admin/login");
+    throw new Error("Tu sesión terminó. Inicia sesión nuevamente.");
+  }
   if (!response.ok) throw new Error(body.error ?? "No se pudo completar la acción.");
   return body;
 }

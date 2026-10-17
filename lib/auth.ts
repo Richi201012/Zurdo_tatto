@@ -85,7 +85,16 @@ export async function authorizeApi(allowed: AdminRole[] = ["ADMIN", "ARTIST", "R
 
 export async function authorizeMutation(request: Request, allowed: AdminRole[] = ["ADMIN", "ARTIST", "RECEPTION"]) {
   const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) return null;
+  if (origin) {
+    const allowedOrigins = new Set([new URL(request.url).origin]);
+    for (const configuredUrl of [process.env.APP_URL, process.env.NEXT_PUBLIC_SITE_URL, process.env.PUBLIC_SITE_URL]) {
+      if (!configuredUrl) continue;
+      try { allowedOrigins.add(new URL(configuredUrl).origin); } catch { /* La configuración inválida no autoriza orígenes. */ }
+    }
+    let requestOrigin = "";
+    try { requestOrigin = new URL(origin).origin; } catch { return null; }
+    if (!allowedOrigins.has(requestOrigin)) return null;
+  }
   return authorizeApi(allowed);
 }
 

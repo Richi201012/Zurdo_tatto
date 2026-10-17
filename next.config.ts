@@ -12,14 +12,13 @@ const nextConfig: NextConfig = {
   async rewrites() {
     if (!backendUrl) return [];
     return {
-      beforeFiles: [{ source: "/api/:path*", destination: `${backendUrl}/api/:path*` }],
+      beforeFiles: [
+        { source: "/api/:path*", destination: `${backendUrl}/api/:path*` },
+        { source: "/admin/:path*", destination: `${backendUrl}/admin/:path*` },
+      ],
       afterFiles: [],
       fallback: [],
     };
-  },
-  async redirects() {
-    if (!backendUrl) return [];
-    return [{ source: "/admin/:path*", destination: `${backendUrl}/admin/:path*`, permanent: false }];
   },
 };
 

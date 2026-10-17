@@ -15,6 +15,7 @@ export async function GET() {
       termsVersion: studioConfig.policies.bookingTermsVersion,
     });
   } catch (error) {
-    return NextResponse.json({ error: error instanceof Error ? error.message : "No se pudo consultar la disponibilidad." }, { status: 500 });
+    console.error("No se pudo consultar la disponibilidad pública.", error);
+    return NextResponse.json({ error: "No pudimos consultar la disponibilidad en este momento. Intenta nuevamente." }, { status: 500 });
   }
 }

@@ -26,5 +26,8 @@ export async function POST(request: Request) {
     const record = await saveTattooRequest({ id: randomUUID(), ...parsed.data, referenceImages: stored.map((image) => image.optimizedUrl), status: "NEW_REQUEST", createdAt: new Date().toISOString() });
     await sendTransactionalEmail({ recipient: record.email, recipientName: record.name, template: "REQUEST_RECEIVED", requestId: record.id, data: { clientName: record.name, requestFolio: record.folio, idea: record.idea, bodyPlacement: record.bodyPlacement, approximateSize: record.approximateSize, colorPreference: record.colorPreference, preferredDay: record.preferredDay }, idempotencyKey: `request-received:${record.id}` }).catch(() => undefined);
     return NextResponse.json({ ok: true, requestId: record.id, folio: record.folio }, { status: 201 });
-  } catch (error) { return NextResponse.json({ error: error instanceof Error ? error.message : "No se pudo guardar la solicitud." }, { status: 500 }); }
+  } catch (error) {
+    console.error("No se pudo guardar la solicitud pública.", error);
+    return NextResponse.json({ error: "No pudimos enviar tu solicitud en este momento. Intenta nuevamente." }, { status: 500 });
+  }
 }

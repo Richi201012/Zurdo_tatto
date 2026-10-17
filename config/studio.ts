@@ -69,7 +69,7 @@ export const studioConfig = {
     cancellationNoticeHours: 48,
     bookingTermsVersion: "2026-10",
     bookingTerms: [
-      "El día elegido por el cliente es una preferencia. El tatuador asignará la fecha y hora definitivas desde el backoffice.",
+      "El día elegido es una preferencia. La fecha y hora propuestas se indicarán en la cotización.",
       "Los cambios de fecha deben solicitarse con al menos 48 horas de anticipación y están sujetos a disponibilidad.",
       "Las cancelaciones deben avisarse con al menos 48 horas de anticipación. El estudio confirmará por escrito qué sucede con el anticipo según el caso.",
       "Una vez enviada la cotización tienes 2 horas para realizar el anticipo. Si el estudio no puede validarlo dentro de ese plazo, el horario se libera automáticamente.",

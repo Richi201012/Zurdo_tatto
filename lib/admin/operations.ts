@@ -246,11 +246,11 @@ export async function scheduleRequestAppointment(
     let appointment;
     if (current) {
       [appointment] = await tx.update(appointments).set({ artistId: input.artistId, startAt: input.startAt, endAt: input.endAt, status: "TENTATIVE", updatedAt: now }).where(eq(appointments.id, current.id)).returning();
-      await tx.insert(appointmentHistory).values({ appointmentId: current.id, previousStartAt: current.startAt, previousEndAt: current.endAt, newStartAt: input.startAt, newEndAt: input.endAt, action: "SCHEDULED_BY_STUDIO", reason: "Fecha y hora asignadas desde el backoffice.", changedBy: actor(session), createdAt: now });
+      await tx.insert(appointmentHistory).values({ appointmentId: current.id, previousStartAt: current.startAt, previousEndAt: current.endAt, newStartAt: input.startAt, newEndAt: input.endAt, action: "SCHEDULED_BY_STUDIO", reason: "Fecha y hora asignadas por el estudio.", changedBy: actor(session), createdAt: now });
     } else {
       const appointmentId = randomUUID(); const folio = `CIT-${new Date(now).getFullYear()}-${appointmentId.replaceAll("-", "").slice(0, 6).toUpperCase()}`;
       [appointment] = await tx.insert(appointments).values({ id: appointmentId, folio, requestId: request.id, clientId: request.clientId, artistId: input.artistId, startAt: input.startAt, endAt: input.endAt, status: "TENTATIVE", summary: request.idea.slice(0, 180), location: studioConfig.contact.address, createdAt: now, updatedAt: now }).returning();
-      await tx.insert(appointmentHistory).values({ appointmentId, newStartAt: input.startAt, newEndAt: input.endAt, action: "SCHEDULED_BY_STUDIO", reason: "Fecha y hora asignadas desde el backoffice.", changedBy: actor(session), createdAt: now });
+      await tx.insert(appointmentHistory).values({ appointmentId, newStartAt: input.startAt, newEndAt: input.endAt, action: "SCHEDULED_BY_STUDIO", reason: "Fecha y hora asignadas por el estudio.", changedBy: actor(session), createdAt: now });
     }
     await tx.update(payments).set({ appointmentId: appointment.id, updatedAt: now }).where(eq(payments.requestId, request.id));
     await tx.update(tattooRequests).set({ artistId: input.artistId, status: "UNDER_REVIEW", nextAction: "Preparar y enviar cotización", lastInteractionAt: now, updatedAt: now }).where(eq(tattooRequests.id, request.id));

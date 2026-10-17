@@ -15,7 +15,7 @@ export async function saveTattooRequest(request: StoredTattooRequest) {
       id: request.id, folio, clientId: client.id, name: request.name, whatsapp: request.whatsapp, email: request.email.toLowerCase(), idea: request.idea,
       bodyPlacement: request.bodyPlacement, approximateSize: request.approximateSize, colorPreference: request.colorPreference,
       preferredDay: request.preferredDay, preferredTime: request.preferredTime, referencePortfolioItemId: request.referencePortfolioItemId || null,
-      artistId: null, status: request.status, nextAction: "Asignar fecha y hora desde el backoffice", lastInteractionAt: request.createdAt, createdAt: request.createdAt, updatedAt: request.createdAt,
+      artistId: null, status: request.status, nextAction: "Asignar fecha y hora", lastInteractionAt: request.createdAt, createdAt: request.createdAt, updatedAt: request.createdAt,
     });
     if (request.referenceImages.length) await tx.insert(tattooRequestImages).values(request.referenceImages.map((imageUrl, sortOrder) => ({ tattooRequestId: request.id, imageUrl, sortOrder })));
     await tx.insert(timelineEvents).values({ clientId: client.id, requestId: request.id, type: "REQUEST_RECEIVED", title: "Solicitud recibida", detail: `Día preferido: ${request.preferredDay}. Horario pendiente de asignación por el estudio.`, actor: "Sistema", metadata: { termsAccepted: true, termsVersion: request.termsVersion }, createdAt: request.createdAt });

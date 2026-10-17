@@ -137,8 +137,8 @@ function absoluteLogoUrl() {
 
 function mascotBanner(template: EmailTemplateName) {
   const mascot = MASCOT_BY_TEMPLATE[template];
-  const src = absolutePublicUrl(`/email/status/${mascot.file}.jpg`);
-  return `<tr><td align="center" style="padding:22px 32px 0;background:#fff"><img src="${esc(src)}" width="260" alt="${esc(mascot.alt)}" style="display:block;width:260px;max-width:100%;height:auto;border:0;border-radius:16px"></td></tr>`;
+  const src = absolutePublicUrl(`/email/status/${mascot.file}.jpg?v=20261016-full`);
+  return `<tr><td align="center" style="padding:22px 32px 0;background:#fff"><img src="${esc(src)}" width="520" alt="${esc(mascot.alt)}" style="display:block;width:100%;max-width:520px;height:auto;border:0;border-radius:16px"></td></tr>`;
 }
 
 export function renderEmail(template: EmailTemplateName, data: EmailTemplateInput) {
